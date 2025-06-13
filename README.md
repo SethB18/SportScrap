@@ -2,6 +2,11 @@
 
 A simple web scraping tool built using Python and BeautifulSoup, wrapped in a Flask web interface. Users can enter a URL, trigger the scraper, and see the results on the page.
 
+--Note : The Target Domain Usaully Chnage thier domain this might cause the iframe and display the whole not just video
+
+you can update this ---> spider.py right click the domain and change to thier current domain URl also change on app.js 
+
+
 ---
 
 ## 📦 Features
