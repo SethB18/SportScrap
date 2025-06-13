@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="video-container w-full flex justify-center px-1 md:px-40">
+        <iframe id="responsive-iframe" src="https://www.song27.com/iframe/ch.php?ch=40391" class="w-full" height="920px" frameborder="0" scrolling="no" style="overflow-y:hidden" allowfullscreen="allowfullscreen" allow="autoplay"></iframe>
+    </div>
+    <div class="game w-full flex justify-center px-1 md:px-40 flex-col items-center">
+        <div class="sport w-full mb-2">
+            <ul class="flex justify-between w-full flex flex-wrap">
+                {% for sport in sports %}
+                    {% if loop.index != 1 %}
+                        <li class="p-2 border rounded-md">
+                            <img src="/static/images/{{sport}}" alt="icon" class="w-12">
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <ul class="w-full">
+            <div class="screen grid grid-cols-2 md:grid-cols-4">
+                <div class="s w-full text-center flex justify-center items-center border rounded">
+                    <img src="/static/images/monitor.png" class="h-auto w-10" alt="">
+                </div>
+                <div class="s w-full text-center flex justify-center items-center border rounded gap-1">
+                    <img src="/static/images/monitor.png" class="h-auto w-8"lt="">
+                    <img src="/static/images/monitor.png" class="h-auto w-8"lt="">
+                </div>
+                <div class="s w-full text-center flex flex-col justify-center items-center border rounded gap-1">
+                    <div class="firstRow flex gap-1">
+                        <img src="/static/images/monitor.png" class="h-auto w-7" alt="">
+                        <img src="/static/images/monitor.png" class="h-auto w-7" alt="">
+                    </div>
+                    <div class="secondRow">
+                        <img src="/static/images/monitor.png" class="h-auto w-9" alt="">
+                    </div>
+                </div>
+                <div class="s w-full text-center flex flex-col justify-center items-center border rounded gap-1">
+                    <div class="firstRow flex gap-1">
+                        <img src="/static/images/monitor.png" class="h-auto w-7" alt="">
+                        <img src="/static/images/monitor.png" class="h-auto w-7" alt="">
+                    </div>
+                    <div class="secondRow flex gap-1">
+                        <img src="/static/images/monitor.png" class="h-auto w-7" alt="">
+                        <img src="/static/images/monitor.png" class="h-auto w-7" alt="">
+                    </div>
+                </div>
+            </div>
+            {% for game in allGames %}
+                <li class="text-center w-full mb-1 border rounded-md items-center bg-blue-200 py-2 px-5 rounded-md">
+                    <div class="top">
+                        <p class="uppercase">{{game['league']}}</p>
+                        <p​​ class="uppercase">{{game['date']}}</p><i class="fa fa-clock-o" style="font-size:36px"></i>
+                    </div>
+                    <div class="bottom text-center w-full flex mb-1 rounded-md items-center">
+                        <div class="team w-7/12 flex flex-col items-center justify-center">
+                            <div class="text-xl font-bold w-full L">{{ game['teamLeft'] }}</div>
+                            <hr class="h-1 w-1/3 bg-blue-200">
+                            <div class="text-xl font-bold w-full R">{{ game['teamRight'] }}</div>
+                        </div>
+                        <div class="watch w-5/12 px-2 md:px-6">
+                            <div class="{% if game['watch'] != 'Not GameId' %}button{% endif %} text-sm md:text-xl font-bold w-full liveBtn p-2 bg-green-700 font-bold text-white text-center"
+                             onclick="Watch('{{ game.watch }}')">
+                            {%if game['watch'] != 'Not GameId' %}
+                                <p class="w-full flex justify-center items-center">경기 보기<img src="static/images/live.png" alt="" class="w-10"></p>
+                            {%else%}
+                                <p class="w-full">시작전</p>
+                            {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+    <!-- <script src="{{url_for('static', filename='prevnt.js')}}"></script> -->
+</body>
+</html>
