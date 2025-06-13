@@ -7,7 +7,7 @@ import re
 
 @app.route('/')
 def home():
-    url = 'https://www.song25.com/tvlist.php'
+    url = 'https://www.magu114.com/tvlist.php'
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
 

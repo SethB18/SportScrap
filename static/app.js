@@ -1,6 +1,6 @@
 function Watch(name){
     if(name!='Not GameId'){
-        path = `https://www.song27.com/iframe/ch.php?ch=${name}`
+        path = `https://www.magu114.com/iframe/ch.php?ch=${name}`
         document.getElementById('responsive-iframe').setAttribute('src',path)
     }
 }
