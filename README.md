@@ -18,8 +18,8 @@ A simple web scraping tool built using Python and BeautifulSoup, wrapped in a Fl
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/SethB18/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/SethB18/SportScrap.git
+cd SportScrap
 -----Guid to Run Project
 
 ------- for clear project venv you need to rm venv and required it again by 
